@@ -3,6 +3,8 @@ using MarsFramework.Global;
 using MarsFramework.Pages;
 using System;
 using System.Threading;
+using MarsFramework.Config;
+
 
 namespace MarsFramework
 {
@@ -26,7 +28,7 @@ namespace MarsFramework
             public void EnterShareSkill()
             {
                 Thread.Sleep(3000);
-                NavigationBar navigationBar = new NavigationBar();   
+                NavigationBar navigationBar = new NavigationBar();
                 ShareSkill shareSkill = navigationBar.clickOnShareSkilBtn();
                 shareSkill.EnterShareSkill();
                 GlobalDefinitions.wait(20);

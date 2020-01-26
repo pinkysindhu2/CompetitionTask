@@ -24,9 +24,9 @@ namespace MarsFramework.Custom_Methods
         {
             element.Click();
         }
-        public static void enterDateAndTimeWithTab(this IWebElement element, string value, char splitChar)
+        public static void setDate(this IWebElement element, string value)
         {
-            if (value != null)
+           /* if (value != null)
             {
                 IList<string> txt = value.Split(splitChar);
                 for (int i = 0; i < txt.Count; i++)
@@ -45,7 +45,23 @@ namespace MarsFramework.Custom_Methods
             else
             {
                 Console.WriteLine("{0} is null " + value);
-            }
+            }*/
+
+            string dateFormat = "dd/MM/yyyy";
+            string newDate =  DateTime.Parse(value).ToString(dateFormat);
+            element.EnterText(newDate);
+            Global.GlobalDefinitions.wait(30);
+            Console.WriteLine("Date Formated: "+newDate);
+            
+        }
+
+        public static void setTime(this IWebElement element, string value)
+        {
+            string timeFormat = "hh:mmtt";
+            string newTime = DateTime.Parse(value).ToString(timeFormat);
+            element.EnterText(newTime);
+            Console.WriteLine("Time Formated: "+ newTime);
+            Global.GlobalDefinitions.wait(10);
         }
     }
 }

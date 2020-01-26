@@ -9,6 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AutoItX3Lib;
+using NUnit.Framework;
+using System.Collections;
 
 namespace MarsFramework.Global
 {
@@ -33,10 +35,10 @@ namespace MarsFramework.Global
         #endregion
 
 
-        #region Excel 
+        #region Read Data from Excel
         public class ExcelLib
         {
-            static List<Datacollection> dataCol = new List<Datacollection>();
+            public static List<Datacollection> dataCol = new List<Datacollection>();
 
             public class Datacollection
             {
@@ -52,7 +54,7 @@ namespace MarsFramework.Global
             }
 
 
-            private static DataTable ExcelToDataTable(string fileName, string SheetName)
+            protected static DataTable ExcelToDataTable(string fileName, string SheetName)
             {
                 // Open file and return as Stream
                 using (System.IO.FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read))
@@ -122,7 +124,6 @@ namespace MarsFramework.Global
 
                         //Add all the details for each row
                         dataCol.Add(dtTable);
-
                     }
                 }
 
@@ -130,6 +131,9 @@ namespace MarsFramework.Global
         }
 
         #endregion
+
+
+      
 
         #region screenshots
         public class SaveScreenShotClass
@@ -170,6 +174,7 @@ namespace MarsFramework.Global
                 Console.WriteLine("File upload path: "+ FileUploadPath);
                 // Upload file
                 AutoItX3 autoIt = new AutoItX3();
+                autoIt.WinWait("Open");
                 autoIt.WinActivate("Open");
                 autoIt.WinWaitActive("Open");
                 autoIt.ControlFocus("Open", "", "Edit1");

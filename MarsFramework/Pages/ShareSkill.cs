@@ -102,40 +102,52 @@ namespace MarsFramework.Pages
 
             //Enter the data on HTML form
             Title.EnterText(GlobalDefinitions.ExcelLib.ReadData(2,"Title"));
+            GlobalDefinitions.wait(10);
+
             Description.EnterText(GlobalDefinitions.ExcelLib.ReadData(2,"Description"));
+            GlobalDefinitions.wait(10);
 
             //Select Category and Subcategory
             CategoryDropDown.selectDropDown(GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
+            GlobalDefinitions.wait(10);
             SubCategoryDropDown.selectDropDown(GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
+            GlobalDefinitions.wait(10);
 
             //Enter tag
             Tags.EnterText(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
             Tags.EnterText(Keys.Enter);
+            GlobalDefinitions.wait(10);
 
             //Select Radio button
             selectServiceRadioButton(ServiceTypeOptions, GlobalDefinitions.ExcelLib.ReadData(2, "ServiceType"));
+            GlobalDefinitions.wait(10);
 
             selectLocationRadioButton(LocationTypeOptions, GlobalDefinitions.ExcelLib.ReadData(2, "LocationType"));
+            GlobalDefinitions.wait(10);
 
             // select start and end data and time
-            //selectStartDateAndTime();
+            selectStartDateAndTime(); 
+            GlobalDefinitions.wait(20);
 
             // select skill trade: Skill exchange or credit
             selectSkillTrade(SkillTradeOption, GlobalDefinitions.ExcelLib.ReadData(2, "Credit"));
+            GlobalDefinitions.wait(10);
 
             // Upload work sample.docx
-            //fileUpload.Click();
-            //GlobalDefinitions.FileUpload.uploadFileUsingAutoIT(@MarsResource.FileUpload);
+            fileUpload.Click();
+            GlobalDefinitions.FileUpload.uploadFileUsingAutoIT(@MarsResource.FileUpload);
 
-            GlobalDefinitions.wait(5);
+            GlobalDefinitions.wait(20);
 
             // select Active Radio button: Active or Hidden
             selectActiveRadioButton(ActiveOption, GlobalDefinitions.ExcelLib.ReadData(2, "Active"));
 
 
         }
+
         internal ManageListings clickOnSaveBtn()
         {
+            GlobalDefinitions.wait(20);
             // Click on Save button
             Save.Clicks();
             return new ManageListings();
@@ -176,11 +188,12 @@ namespace MarsFramework.Pages
 
         private void selectStartDateAndTime()
         {
-            string startDate = GlobalDefinitions.ExcelLib.ReadData(2, "Startdate").Replace('-',' ').Trim(' ');
-            Console.WriteLine("Date Time: "+ startDate + "Reading directly from Excel "+ GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
-            StartDateDropDown.enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"), '-');
             
-            EndDateDropDown.enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"), '-');
+            StartDateDropDown.setDate(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
+
+            GlobalDefinitions.wait(20);
+            
+            EndDateDropDown.setDate(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));
             
 
             string weekDay = GlobalDefinitions.ExcelLib.ReadData(2, "Selectday");
@@ -190,51 +203,51 @@ namespace MarsFramework.Pages
                 case "Sun":
                     Days.FindElement(By.XPath("//div[2]/descendant::input[@index='0' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[2]/descendant::input[@index='0' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2,"Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2,"Starttime"));
                     Days.FindElement(By.XPath("//div[2]/descendant::input[@index='0' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 case "Tue":
                     Days.FindElement(By.XPath("//div[4]/descendant::input[@index='2' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[4]/descendant::input[@index='2' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[4]/descendant::input[@index='2' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 case "Wed":
                     Days.FindElement(By.XPath("//div[5]/descendant::input[@index='3' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[5]/descendant::input[@index='3' and @name='StartTime']")).
-                       enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                       setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[5]/descendant::input[@index='3' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 case "Thu":
                     Days.FindElement(By.XPath("//div[6]/descendant::input[@index='4' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[6]/descendant::input[@index='4' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[6]/descendant::input[@index='4' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 case "Fri":
                     Days.FindElement(By.XPath("//div[7]/descendant::input[@index='5' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[7]/descendant::input[@index='5' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[7]/descendant::input[@index='5' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 case "Sat":
                     Days.FindElement(By.XPath("//div[8]/descendant::input[@index='6' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[8]/descendant::input[@index='6' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[8]/descendant::input[@index='6' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
                 default:
                     Days.FindElement(By.XPath("//div[3]/descendant::input[@index='1' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[3]/descendant::input[@index='1' and @name='StartTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"), ' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Starttime"));
                     Days.FindElement(By.XPath("//div[3]/descendant::input[@index='1' and @name='EndTime']")).
-                        enterDateAndTimeWithTab(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"),' ');
+                        setTime(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime"));
                     break;
             }
 
@@ -286,8 +299,39 @@ namespace MarsFramework.Pages
             }
         }
 
-       
 
-        
+        private void chooseSkillTrade(IWebElement element, string trade, string skillExc, string credit)
+        {
+            if (trade == "Skill-Exchange")
+            {
+                element.FindElement(By.XPath("//div[@class='ui radio checkbox']/input[@value = 'true' and @name='skillTrades']")).Click();
+                if (SkillExchange.Displayed && SkillExchange.Enabled)
+                {
+                    SkillExchange.EnterText(skillExc);
+                    SkillExchange.EnterText(Keys.Enter);
+                }
+                else
+                {
+                    Console.WriteLine("Skill Exchange textbox is not avaiable");
+                    return;
+                }
+            }
+            else if (trade == "Credit")
+            {
+                IWebElement Credit = element.FindElement(By.XPath("//div[@class='ui radio checkbox']/input[@value = 'false' and @name = 'skillTrades']"));
+                Credit.Click();
+                GlobalDefinitions.wait(5);
+                if (CreditAmount.Displayed && CreditAmount.Enabled)
+                {
+                    CreditAmount.EnterText(credit);
+                }
+                else
+                {
+                    Console.WriteLine("Credit textbox is not avaiable");
+                    return;
+                }
+            }
+        }
+
     }
 }
