@@ -16,12 +16,16 @@ namespace MarsFramework.Global
 
         public static int Browser = Int32.Parse(MarsResource.Browser);
         // Get the current directory MarsFramework
-        private static string solutionParentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+        public static String ExcelPath =  @MarsResource.ExcelPath;
+        public static string ScreenshotPath = @MarsResource.ScreenShotPath;
+        public static string ReportPath = @MarsResource.ReportPath;
+        public static string ReportXmlPath = @MarsResource.ReportXMLPath;
+        /*private static string solutionParentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
         public static String ExcelPath = Path.Combine(solutionParentDirectory, @MarsResource.ExcelPath);
         public static string ScreenshotPath = Path.Combine(solutionParentDirectory, @MarsResource.ScreenShotPath);
         public static string ReportPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportPath);
-        public static string ReportXmlPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportXMLPath);
-        
+        public static string ReportXmlPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportXMLPath);*/
+
         #endregion
 
         #region reports

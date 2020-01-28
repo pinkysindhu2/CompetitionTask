@@ -8,7 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using AutoItX3Lib;
+using AutoIt;
 using NUnit.Framework;
 using System.Collections;
 
@@ -173,13 +173,13 @@ namespace MarsFramework.Global
                 FileUploadPath = Path.Combine(solutionParentDirectory,fileName);
                 Console.WriteLine("File upload path: "+ FileUploadPath);
                 // Upload file
-                AutoItX3 autoIt = new AutoItX3();
-                autoIt.WinWait("Open");
-                autoIt.WinActivate("Open");
-                autoIt.WinWaitActive("Open");
-                autoIt.ControlFocus("Open", "", "Edit1");
-                autoIt.ControlSetText("Open", "", "Edit1", FileUploadPath);
-                autoIt.ControlClick("Open", "", "Button1");
+                //AutoIt autoIt = new AutoIt();
+                AutoItX.WinWait("Open");
+                AutoItX.WinActivate("Open");
+                AutoItX.WinWaitActive("Open");
+                AutoItX.ControlFocus("Open", "", "Edit1");
+                AutoItX.ControlSetText("Open", "", "Edit1", FileUploadPath);
+                AutoItX.ControlClick("Open", "", "Button1");
             }
         }
         #endregion
