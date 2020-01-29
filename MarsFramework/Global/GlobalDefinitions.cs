@@ -18,7 +18,8 @@ namespace MarsFramework.Global
     {
         //Initialise the browser
         public static IWebDriver driver { get; set; }
-        public static string projectUrl = "http://www.skillswap.pro/";
+        //public static string projectUrl = "http://www.skillswap.pro/";
+        public static string projectUrl = "http://192.168.99.100:5000/";
 
         #region WaitforElement 
 
