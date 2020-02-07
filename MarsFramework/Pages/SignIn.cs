@@ -1,7 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using MarsFramework.Global;
-using OpenQA.Selenium.Support.PageObjects;
-using System;
+using SeleniumExtras.PageObjects;
+
 
 namespace MarsFramework.Pages
 {
@@ -10,7 +11,7 @@ namespace MarsFramework.Pages
 
         public SignIn()
         {
-            PageFactory.InitElements(GlobalDefinitions.driver, this);
+            PageFactory.InitElements(this, new RetryingElementLocator(GlobalDefinitions.driver, TimeSpan.FromSeconds(20)));
         }
 
         #region  Initialize Web Elements 
@@ -47,8 +48,7 @@ namespace MarsFramework.Pages
             Password.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Password"));
 
             LoginBtn.Click();
-            GlobalDefinitions.wait(30);
-
+            //GlobalDefinitions.wait(40);
         }
 
 

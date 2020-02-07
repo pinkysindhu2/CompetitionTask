@@ -153,6 +153,10 @@
     <None Include="app.config" />
     <None Include="docker-compose.yaml" />
     <None Include="packages.config" />
+    <None Include="stopDockerEngine.bat" />
+    <None Include="startDockerEngine.bat" />
+    <None Include="startPMWebsite.bat" />
+    <None Include="stopPMWebsite.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.41.0\content\chromedriver.exe">

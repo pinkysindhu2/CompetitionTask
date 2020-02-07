@@ -5,7 +5,9 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using RelevantCodes.ExtentReports;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using static MarsFramework.Global.GlobalDefinitions;
 
 namespace MarsFramework.Global
@@ -37,7 +39,11 @@ namespace MarsFramework.Global
         [OneTimeSetUp]
         public void Inititalize()
         {
-
+            Process.Start(@"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\startDockerEngine.bat");
+            Thread.Sleep(120000);
+            // run the docker-compose file
+            RunDockerComposeFile();
+            Thread.Sleep(90000);
             // advisasble to read this documentation before proceeding http://extentreports.relevantcodes.com/net/
             switch (Browser)
             {
@@ -46,6 +52,7 @@ namespace MarsFramework.Global
                     GlobalDefinitions.driver = new FirefoxDriver();
                     break;
                 case 2:
+                    Thread.Sleep(3000);
                     GlobalDefinitions.driver = new ChromeDriver();
                     GlobalDefinitions.driver.Manage().Window.Maximize();
                     GlobalDefinitions.driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(40);
@@ -88,8 +95,53 @@ namespace MarsFramework.Global
             // Close the driver :)            
             GlobalDefinitions.driver.Close();
             GlobalDefinitions.driver.Quit();
+            StopDockerComposeFile();
+            Process.Start(@"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\stopDockerEngine.bat");
+            EndProcess();
+
         }
         #endregion
 
+        #region Run Docker and Stop
+        private void RunDockerComposeFile()
+        {
+            try
+            {
+               
+                string FileName = @"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\startPMWebsite.bat";
+                
+                Process.Start(FileName);
+                  
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error in bat file {0} with the following {1} execption ", "startPMWebsite.bat", e);
+            }
+            
+        }
+
+        private void StopDockerComposeFile()
+        {
+            try
+            {
+                string FileName = @"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\stopPMWebsite.bat";
+
+                Process.Start(FileName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error in bat file {0} with the following {1} execption ", "startPMWebsite.bat", e);
+            }
+        }
+        private void EndProcess()
+        {
+            Process[] process = Process.GetProcesses();
+            foreach (var p in process)
+            {
+                Console.WriteLine("Process Nanme " + p.ProcessName);
+                p.Kill();
+            }
+        }
+        #endregion
     }
 }

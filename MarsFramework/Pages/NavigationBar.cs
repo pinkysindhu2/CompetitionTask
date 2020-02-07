@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using MarsFramework.Global;
 using MarsFramework.Custom_Methods;
+using OpenQA.Selenium.Support.Extensions;
 
 namespace MarsFramework.Pages
 {

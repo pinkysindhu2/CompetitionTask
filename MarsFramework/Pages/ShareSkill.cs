@@ -1,8 +1,7 @@
 ﻿using OpenQA.Selenium;
 using MarsFramework.Global;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using System.Threading;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using MarsFramework.Config;
@@ -126,7 +125,7 @@ namespace MarsFramework.Pages
             GlobalDefinitions.wait(10);
 
             // select start and end data and time
-            selectStartDateAndTime(); 
+            //selectStartDateAndTime(); 
             GlobalDefinitions.wait(20);
 
             // select skill trade: Skill exchange or credit

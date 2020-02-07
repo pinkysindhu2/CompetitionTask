@@ -1,7 +1,7 @@
 ﻿using MarsFramework.Global;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using MarsFramework.Custom_Methods;
@@ -10,7 +10,7 @@ namespace MarsFramework.Pages
 {
     internal class ManageListings
     {
-        private string url = "http://www.skillswap.pro/Home/ListingManagement";
+        private string url = "http://192.168.99.100:5000/Home/ListingManagement";
         public ManageListings()
         {
             PageFactory.InitElements(GlobalDefinitions.driver, this);
@@ -52,7 +52,7 @@ namespace MarsFramework.Pages
             if(verifyListingAvabilability())
             {
                 // check the Service is listed or not: Saved or updated
-                GlobalDefinitions.wait(10);
+                GlobalDefinitions.wait(30);
                 int currentRows = getTotalRows();
                 isServiceListed(currentRows-1, currentRows, "Save");
             }
@@ -124,13 +124,13 @@ namespace MarsFramework.Pages
             Console.WriteLine("Total Rows: " + totalRows + " Current Rows: "+currentRows);
             if( methodName == "Delete")
             {
-                GlobalDefinitions.wait(15);
+                GlobalDefinitions.wait(30);
                 Assert.That(currentRows, Is.LessThan(totalRows));
             }
             else if( methodName == "Save")
             {
                 Assert.Multiple(() => {
-                    GlobalDefinitions.wait(15);
+                    GlobalDefinitions.wait(30);
                     Assert.That(GlobalDefinitions.driver.Url, Is.EqualTo(url));
                     Assert.That(currentRows, Is.GreaterThan(totalRows));
                 });
@@ -149,14 +149,16 @@ namespace MarsFramework.Pages
             {
                 // Before Delete option
                 int totalRow = getTotalRows();
+                
                 delete.Click();
                 
                 if (clickActionsButton.Displayed && clickActionsButton.Enabled)
                 {
                     clickActionsButton.FindElement(By.XPath("//div[@class='actions']/button[2]")).Click();
-                    GlobalDefinitions.wait(30);
+                    GlobalDefinitions.wait(15);
                     if (verifyListingAvabilability())
                     {
+                        
                         int currentRows = getTotalRows();
                         isServiceListed(totalRow,currentRows, "Delete");
 
@@ -184,6 +186,7 @@ namespace MarsFramework.Pages
 
         private int getTotalRows()
         {
+            GlobalDefinitions.wait(20);
             IWebElement tbody = table.FindElement(By.XPath("//tbody"));
             IList<IWebElement> rows = tbody.FindElements(By.XPath("//tbody/tr"));
             return rows.Count;

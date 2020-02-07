@@ -1,16 +1,14 @@
 ﻿using Excel;
-using MarsFramework.Config;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
+using AutoIt;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using AutoIt;
-using NUnit.Framework;
-using System.Collections;
+using OpenQA.Selenium;
+using System.Collections.Generic;
+using OpenQA.Selenium.Support.UI;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace MarsFramework.Global
 {

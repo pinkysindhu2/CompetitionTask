@@ -18,10 +18,10 @@ namespace MarsFramework
             [Test, Order(1)]
             public void LoginSuccess()
             {
-                Thread.Sleep(3000);
+                GlobalDefinitions.wait(40);
                 string currentUrl = GlobalDefinitions.driver.Url;
                 Console.WriteLine(currentUrl);
-                Assert.That(currentUrl, Is.EqualTo("http://www.skillswap.pro/Account/Profile"));
+                Assert.That(currentUrl, Is.EqualTo("http://192.168.99.100:5000/Account/Profile"));
             }
 
             [Test, Order(2)]
@@ -33,6 +33,7 @@ namespace MarsFramework
                 shareSkill.EnterShareSkill();
                 GlobalDefinitions.wait(20);
                 ManageListings manageListings = shareSkill.clickOnSaveBtn();
+                GlobalDefinitions.wait(20);
                 manageListings.isServiceSaved();
             }
 
