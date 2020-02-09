@@ -18,16 +18,20 @@ namespace MarsFramework.Global
 
         public static int Browser = Int32.Parse(MarsResource.Browser);
         // Get the current directory MarsFramework
-        public static String ExcelPath =  @MarsResource.ExcelPath;
+/*        public static String ExcelPath =  @MarsResource.ExcelPath;
         public static string ScreenshotPath = @MarsResource.ScreenShotPath;
         public static string ReportPath = @MarsResource.ReportPath;
-        public static string ReportXmlPath = @MarsResource.ReportXMLPath;
-        /*private static string solutionParentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+        public static string ReportXmlPath = @MarsResource.ReportXMLPath;*/
+        private static string solutionParentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
         public static String ExcelPath = Path.Combine(solutionParentDirectory, @MarsResource.ExcelPath);
         public static string ScreenshotPath = Path.Combine(solutionParentDirectory, @MarsResource.ScreenShotPath);
         public static string ReportPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportPath);
-        public static string ReportXmlPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportXMLPath);*/
-
+        public static string ReportXmlPath = Path.Combine(solutionParentDirectory, @MarsResource.ReportXMLPath);
+        // Bat files path
+        public static string startDockerEngine = Path.Combine(solutionParentDirectory, @"startDockerEngine.bat");
+        public static string startDockerImage = Path.Combine(solutionParentDirectory, @"startPMWebsite.bat");
+        public static string stopDockerImage = Path.Combine(solutionParentDirectory, @"stopPMWebsite.bat");
+        public static string stopDockerEngine = Path.Combine(solutionParentDirectory, @"stopDockerEngine.bat");
         #endregion
 
         #region reports
@@ -39,7 +43,7 @@ namespace MarsFramework.Global
         [OneTimeSetUp]
         public void Inititalize()
         {
-            Process.Start(@"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\startDockerEngine.bat");
+            Process.Start(startDockerEngine);
             Thread.Sleep(120000);
             // run the docker-compose file
             RunDockerComposeFile();
@@ -96,7 +100,9 @@ namespace MarsFramework.Global
             GlobalDefinitions.driver.Close();
             GlobalDefinitions.driver.Quit();
             StopDockerComposeFile();
-            Process.Start(@"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\stopDockerEngine.bat");
+            Thread.Sleep(3000);
+            Process.Start(stopDockerEngine);
+            Thread.Sleep(2000);
             EndProcess();
 
         }
@@ -106,13 +112,11 @@ namespace MarsFramework.Global
         private void RunDockerComposeFile()
         {
             try
-            {
-               
+            {  
                 string FileName = @"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\startPMWebsite.bat";
                 
-                Process.Start(FileName);
-                  
-            }
+                Process.Start(FileName);    
+            } 
             catch(Exception e)
             {
                 Console.WriteLine("Error in bat file {0} with the following {1} execption ", "startPMWebsite.bat", e);
@@ -124,7 +128,7 @@ namespace MarsFramework.Global
         {
             try
             {
-                string FileName = @"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\stopPMWebsite.bat";
+                string FileName = stopDockerImage;
 
                 Process.Start(FileName);
             }
@@ -138,8 +142,12 @@ namespace MarsFramework.Global
             Process[] process = Process.GetProcesses();
             foreach (var p in process)
             {
+                if(p.ProcessName == "cmd" || p.ProcessName == "conhost")
+                {
+                    p.Kill();
+                }
                 Console.WriteLine("Process Nanme " + p.ProcessName);
-                p.Kill();
+                
             }
         }
         #endregion

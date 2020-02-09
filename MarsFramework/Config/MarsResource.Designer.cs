@@ -70,7 +70,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\ExcelData\Seller_Test_Data.xlsx.
+        ///   Looks up a localized string similar to ExcelData\Seller_Test_Data.xlsx.
         /// </summary>
         internal static string ExcelPath {
             get {
@@ -79,7 +79,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\ExcelData\workSample.docx.
+        ///   Looks up a localized string similar to ExcelData\workSample.docx.
         /// </summary>
         internal static string FileUpload {
             get {
@@ -97,7 +97,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Test Results\Report\Test.html.
+        ///   Looks up a localized string similar to Test Results\Report\Test.html.
         /// </summary>
         internal static string ReportPath {
             get {
@@ -106,7 +106,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Config\XMLFile.xml.
+        ///   Looks up a localized string similar to Config\XMLFile.xml.
         /// </summary>
         internal static string ReportXMLPath {
             get {
@@ -115,7 +115,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Test Results\ScreenShot\.
+        ///   Looks up a localized string similar to Test Results\ScreenShot\.
         /// </summary>
         internal static string ScreenShotPath {
             get {

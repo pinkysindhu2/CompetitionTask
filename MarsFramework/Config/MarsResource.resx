@@ -122,22 +122,22 @@
     <comment>1 for firefox and 2 for Chrome</comment>
   </data>
   <data name="ExcelPath" xml:space="preserve">
-    <value>C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\ExcelData\Seller_Test_Data.xlsx</value>
+    <value>ExcelData\Seller_Test_Data.xlsx</value>
   </data>
   <data name="FileUpload" xml:space="preserve">
-    <value>C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\ExcelData\workSample.docx</value>
+    <value>ExcelData\workSample.docx</value>
   </data>
   <data name="IsLogin" xml:space="preserve">
     <value>true</value>
     <comment>If true Login, else Register</comment>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Test Results\Report\Test.html</value>
+    <value>Test Results\Report\Test.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Config\XMLFile.xml</value>
+    <value>Config\XMLFile.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\Test Results\ScreenShot\</value>
+    <value>Test Results\ScreenShot\</value>
   </data>
 </root>

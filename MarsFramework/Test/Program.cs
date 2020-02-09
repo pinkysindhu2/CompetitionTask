@@ -18,7 +18,7 @@ namespace MarsFramework
             [Test, Order(1)]
             public void LoginSuccess()
             {
-                GlobalDefinitions.wait(40);
+                Thread.Sleep(4000);
                 string currentUrl = GlobalDefinitions.driver.Url;
                 Console.WriteLine(currentUrl);
                 Assert.That(currentUrl, Is.EqualTo("http://192.168.99.100:5000/Account/Profile"));
