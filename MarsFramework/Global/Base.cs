@@ -112,9 +112,9 @@ namespace MarsFramework.Global
         private void RunDockerComposeFile()
         {
             try
-            {  
-                string FileName = @"C:\Users\Pinky Sindhu\Desktop\Industry Connect\Industry Connect\Internship\Task 2\marsframework-master\MarsFramework\startPMWebsite.bat";
-                
+            {
+                string FileName = startDockerImage;
+               
                 Process.Start(FileName);    
             } 
             catch(Exception e)
